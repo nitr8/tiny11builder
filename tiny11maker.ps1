@@ -195,7 +195,7 @@ if (-not $architecture) {
 
 Write-Output "Mounting complete! Performing removal of applications..."
 
-$packages = & 'dism' '/English' "/image:$($ScratchDisk)\scratchdir" '/Get-ProvisionedAppxPackages' | Out-Null
+$packages = & 'dism' '/English' "/image:$($ScratchDisk)\scratchdir" '/Get-ProvisionedAppxPackages' |
     ForEach-Object {
         if ($_ -match 'PackageName : (.*)') {
             $matches[1]
@@ -488,4 +488,5 @@ if (Test-Path -Path "$PSScriptRoot\autounattend.xml") {
 Stop-Transcript
 
 exit
+
 
